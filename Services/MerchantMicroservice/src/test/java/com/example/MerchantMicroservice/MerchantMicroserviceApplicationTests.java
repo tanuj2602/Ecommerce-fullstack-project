@@ -1,10 +1,10 @@
-package com.example.merchantService;
+package com.example.MerchantMicroservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MerchantServiceApplicationTests {
+class MerchantMicroserviceApplicationTests {
 
 	@Test
 	void contextLoads() {
