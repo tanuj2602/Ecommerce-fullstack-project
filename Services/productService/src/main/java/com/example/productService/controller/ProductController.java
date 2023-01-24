@@ -16,11 +16,11 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
+@RequestMapping(value = "/product")
 public class ProductController {
     @Autowired
     ProductService productService;
-    @Autowired
-    MongoTemplate mongoTemplate;
 
     @PostMapping(value = "/insertProductDetailsByMerchant")
     public ResponseEntity<Object> insertProductDetailsByMerchant(@RequestBody ProductDto productDto)
@@ -39,9 +39,9 @@ public class ProductController {
     }
 
     @GetMapping(value = "/getProductById/{productId}")
-    public ResponseEntity<Optional<ProductTable>> getItemByProductId(@PathVariable(value = "productId") String productId)
+    public ResponseEntity<List<ProductTable>> getItemByProductId(@PathVariable(value = "productId") String productId)
     {
-        return new ResponseEntity<>(productService.findById(productId),HttpStatus.OK);
+        return new ResponseEntity<List<ProductTable>>(productService.findByProductId(productId),HttpStatus.OK);
     }
 
     @GetMapping(value = "/searchItemsByCategoryId/{categoryId}")
@@ -51,12 +51,28 @@ public class ProductController {
         return new ResponseEntity<List<ProductTable>>(productTables, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/searchItemsByMerchantId/{merchantId}")
+    public  ResponseEntity<List<ProductTable>> getItemsByMerchantId(@PathVariable(value = "merchantId") String merchantId) {
+
+        List<ProductTable> productTables=productService.findByMercahntId(merchantId);
+        return new ResponseEntity<List<ProductTable>>(productTables, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/getAllProducts")
+    public  List<ProductTable> getAllProducts() {
+
+       return productService.findAll();
+    }
+
 //    @GetMapping(value = "/searchItemsByName/{name}")
 //    public  ResponseEntity<List<ProductTable>> getItemsByMerchantId(@PathVariable(value = "merchantId") String merchantId) {
 //
 //        List<ProductTable> productTables=productService.findByName(merchantId);
 //        return new ResponseEntity<List<ProductTable>>(productTables, HttpStatus.OK);
 //    }
+
+//    @GetMapping(value = "/searchItemsByName/{name}")
+
 
 
 }

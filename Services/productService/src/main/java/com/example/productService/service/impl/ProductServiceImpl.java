@@ -31,7 +31,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Optional<ProductTable> findById(String productId) {
-        return productRepository.findById(productId);
+    public List<ProductTable> findByProductId(String productId) {
+        return productRepository.findByproductId(productId);
+    }
+
+    @Override
+    public List<ProductTable> findAll() {
+        return productRepository.findAll();
+    }
+
+    @Override
+    public List<ProductTable> findByMercahntId(String merchantId) {
+        return productRepository.findByMerchantId(merchantId);
     }
 }

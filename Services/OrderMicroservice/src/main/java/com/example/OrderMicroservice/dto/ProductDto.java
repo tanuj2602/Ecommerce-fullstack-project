@@ -1,10 +1,10 @@
-package com.example.productService.dto;
+package com.example.OrderMicroservice.dto;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
@@ -14,7 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 public class ProductDto {
 
-
     private String productId;
     private String productName;
     private String productDescription;
@@ -22,9 +21,8 @@ public class ProductDto {
     private String productCategory;
     private String merchantId;
     private String merchantName;
-    private double productRating;
+    private Integer productRating;
     private double productPrice;
     private Integer productStock;
     private Integer algoValue;
-
 }

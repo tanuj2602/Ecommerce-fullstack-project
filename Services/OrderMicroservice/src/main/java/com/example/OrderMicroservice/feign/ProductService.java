@@ -1,13 +1,11 @@
-package com.example.MerchantMicroservice.feign;
+package com.example.OrderMicroservice.feign;
 
-import com.example.MerchantMicroservice.dto.ProductDto;
+import com.example.OrderMicroservice.dto.ProductDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-import java.util.Optional;
 
 @FeignClient(name = "ProductService",url = "http://localhost:8090/product")
 public interface ProductService {
@@ -16,10 +14,5 @@ public interface ProductService {
     public List<ProductDto> getAllProducts();
 
     @GetMapping(value = "/getProductById/{productId}")
-    public List<ProductDto> findByProductId(@RequestParam(value = "productId") String productId);
-
-    @GetMapping(value = "/insertProductDetailsByMerchant")
-    public ProductDto insertProductDetails(ProductDto productTable);
-
-
+    public List<ProductDto> findByProductId(@PathVariable(value = "productId") String productId);
 }

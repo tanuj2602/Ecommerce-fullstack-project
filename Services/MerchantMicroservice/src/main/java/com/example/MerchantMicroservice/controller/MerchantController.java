@@ -5,6 +5,7 @@ import com.example.MerchantMicroservice.entity.Merchant;
 import com.example.MerchantMicroservice.feign.ProductService;
 import com.example.MerchantMicroservice.repository.mongo.MerchantRepository;
 import com.example.MerchantMicroservice.services.MerchantService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,11 +48,24 @@ public class MerchantController {
         return productService.getAllProducts();
     }
 
-    @GetMapping(value = "/getProductById")
-    public List<ProductDto> getpro(@RequestParam String productId)
+    @GetMapping(value = "/getProductById/{productId}")
+    public List<ProductDto> getproductById(@RequestParam String productId)
     {
         return productService.findByProductId(productId);
     }
+
+    @PostMapping(value = "/insertProductDetailsByMerchant")
+    public ResponseEntity<Object> insertProductDetailsByMerchant(@RequestBody ProductDto productDto)
+    {
+        ProductDto productTable= new ProductDto();
+        BeanUtils.copyProperties(productDto,productTable);
+        ProductDto employeeCreated = productService.insertProductDetails(productTable);
+        return new ResponseEntity<>( productDto,HttpStatus.OK);
+    }
+
+
+
+
 
 
 }

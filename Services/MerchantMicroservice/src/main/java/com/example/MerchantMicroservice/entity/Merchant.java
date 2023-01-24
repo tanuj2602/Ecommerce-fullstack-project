@@ -16,5 +16,5 @@ public class Merchant {
     private String merchantEmail;
     private String merchantPassword;
     private String merchantConfirmPassword;
-    private List productId;
+    private String productId;
 }

@@ -9,6 +9,11 @@ public interface ProductService {
     public ProductTable insertProductDetails(ProductTable productTable);
 
     List<ProductTable> findByName(String name);
+    List<ProductTable> findByProductId(String productId);
     List<ProductTable> findByCategory(String name);
-    public Optional<ProductTable> findById(String productId);
+//    public Optional<ProductTable> findById(String productId);
+
+    public List<ProductTable> findAll();
+
+    public List<ProductTable> findByMercahntId(String merchantId );
 }

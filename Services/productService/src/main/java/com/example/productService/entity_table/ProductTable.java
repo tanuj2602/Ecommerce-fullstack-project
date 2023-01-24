@@ -21,11 +21,19 @@ public class ProductTable {
     @Id
     private String productId;
     private String productName;
-    private String productDiscription;
-    private double productPrice;
-    private int productStock;
-    private String imageUrl;
-    private List<String> merchantId;
+    private String productDescription;
+    private List<String> imageUrl;
     private String productCategory;
+    private String merchantId;
+    private String merchantName;
+    private double productRating;
+    private double productPrice;
+    private Integer productStock;
+    private Integer algoValue;
+
+
+
+
+
 
 }
